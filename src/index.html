@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<!-- 写pc端页面分辨率一般是1200-2000 -->
+	<style>
+		/*css reset 开始*/
+		html,
+		body {
+			height: 100%;
+			overflow: hidden;
+		}
+
+		html,
+		body,
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		p,
+		ul,
+		li {
+			margin: 0px;
+			padding: 0px;
+			font: 14px "微软雅黑";
+		}
+
+		a {
+			text-decoration: none;
+			display: block;
+		}
+
+		li {
+			list-style: none;
+		}
+
+		img {
+			display: block;
+		}
+
+		/*css reset 结束*/
+
+		/*common css 开始*/
+		.clearfix {
+			*zoom: 1;
+		}
+
+		.clearfix:after {
+			content: "";
+			display: block;
+			clear: both;
+		}
+
+		.commonTitle {
+			color: #009ee0;
+			font-size: 80px;
+			line-height: 0.8;
+			font-weight: bold;
+			letter-spacing: -5px;
+		}
+
+		.commonText {
+			color: white;
+			line-height: 1.5;
+			font-size: 15px;
+		}
+
+		/*common css 结束*/
+
+		/*头部样式 开始*/
+		#head {
+			background: white !important;
+			width: 100%;
+		}
+
+		#head .headMain {
+			width: 1100px;
+			height: 80px;
+			margin: 0 auto;
+			position: relative;
+		}
+
+		#head>.headMain>.logo {
+			float: left;
+			margin-top: 30px;
+		}
+
+		#head>.headMain>.nav {
+			float: right;
+			margin-top: 50px;
+		}
+
+		#head>.headMain>.nav>ul>li {
+			float: left;
+			margin-left: 40px;
+			position: relative;
+		}
+
+		#head>.headMain>.nav>ul>li .up {
+			color: #000;
+			width: 0;
+			position: absolute;
+			overflow: hidden;
+			transition: 1s;
+		}
+
+		#head>.headMain>.nav>ul>li:hover .up {
+			width: 100%;
+		}
+
+		#head>.headMain>.arrow {
+			width: 21px;
+			height: 11px;
+			background-image: url(img/menuIndicator.png);
+			position: absolute;
+			left: 50%;
+			bottom: -11px;
+			transition: 1s;
+			z-index: 1;
+		}
+
+		/*头部样式 结束*/
+
+		/*内容区样式 开始*/
+		#content {
+			background: gray;
+			position: relative;
+			overflow: hidden;
+			width: 100%;
+		}
+
+		#content>ul {
+			position: absolute;
+			width: 100%;
+			transition: 1s top;
+			top: 0;
+			left: 0;
+		}
+
+		#content>ul>li {
+			position: relative;
+			background-position: 50% 50% !important;
+			overflow: hidden;
+		}
+
+		#content>ul>li>section {
+			width: 1100px;
+			height: 520px;
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			margin: auto;
+		}
+
+		#content>ul>.home {
+			background: url(img/bg1.jpg) no-repeat;
+		}
+
+		#content>ul>.course {
+			background: url(img/bg2.jpg) no-repeat;
+		}
+
+		#content>ul>.works {
+			background: url(img/bg3.jpg) no-repeat;
+		}
+
+		#content>ul>.about {
+			background: url(img/bg4.jpg) no-repeat;
+		}
+
+		#content>ul>.team {
+			background: url(img/bg5.jpg) no-repeat;
+		}
+
+		/*内容区样式 结束*/
+
+		/*第三屏 开始*/
+		.works>section>header {
+			margin: 50px 0 100px 50px;
+		}
+
+		.works>section>#workitem {
+			margin-left: 50px;
+			position: relative;
+			z-index: 1;
+		}
+
+		.works #workitem>.item {
+			position: relative;
+			float: left;
+			width: 220px;
+			height: 133px;
+			margin: 0 1px;
+			overflow: hidden;
+		}
+
+		.works #workitem>.item:nth-child(4) {
+			width: 332px;
+			height: 133px;
+		}
+
+		.works #workitem>.item>img {
+			transition: 1s;
+		}
+
+		.works #workitem>.item>.mask {
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			box-sizing: border-box;
+			padding: 10px;
+			background: #000000;
+			opacity: 0;
+			color: white;
+			transition: 1s opacity;
+		}
+
+		.works #workitem>.item>.mask>.icon {
+			width: 32px;
+			height: 34px;
+			margin: 0 auto;
+			margin-top: 10px;
+			background: url(img/zoomico.png) no-repeat;
+			transition: 1s background-position;
+		}
+
+		.works #workitem>.item:hover .mask {
+			opacity: 0.8;
+		}
+
+		.works #workitem>.item>.mask>.icon:hover {
+			background-position: 0 -36px;
+		}
+
+		.works #workitem>.item:hover img {
+			transform: rotate(30deg) scale(1.5);
+		}
+
+		.works>section>.robot {
+			position: absolute;
+			left: 900px;
+			top: 170px;
+			width: 167px;
+			height: 191px;
+			background: url(img/robot.png) no-repeat;
+			animation: robotmove 5s linear infinite;
+		}
+
+		@keyframes robotmove {
+			0% {
+				transform: rotateY(0deg);
+			}
+
+			49% {
+				transform: translateX(-490px) rotateY(0deg);
+			}
+
+			50% {
+				transform: translateX(-500px) rotateY(180deg);
+			}
+
+			100% {
+				transform: rotateY(180deg);
+			}
+		}
+
+		/*第三屏 结束*/
+		/*第二屏 开始*/
+		.course>section>header {
+			margin: 50px;
+		}
+
+		.course>section>.coursetext {
+			width: 400px;
+			margin-left: 50px;
+			position: relative;
+			z-index: 1;
+		}
+
+		.course>section>.courseitem {
+			width: 480px;
+			position: absolute;
+			right: 50px;
+			top: 70px;
+			z-index: 1;
+		}
+
+		.course>section>.courseitem>.item {
+			position: relative;
+			width: 120px;
+			height: 132px;
+			float: left;
+			perspective: 500px;
+			transform-style: preserve-3d;
+		}
+
+		.course>section>.courseitem>.item>.backface {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			box-sizing: border-box;
+			padding: 15px;
+			transition: 1s transform;
+		}
+
+		.course>section>.courseitem>.item>.backface {
+			background-position: 50% 50% !important;
+		}
+
+		.course>section>.courseitem>.item:nth-of-type(1)>.backface {
+			background: url(img/apcoa.png) no-repeat;
+		}
+
+		.course>section>.courseitem>.item:nth-of-type(2)>.backface {
+			background: url(img/bks.png) no-repeat;
+		}
+
+		.course>section>.courseitem>.item:nth-of-type(3)>.backface {
+			background: url(img/gu.png) no-repeat;
+		}
+
+		.course>section>.courseitem>.item:nth-of-type(4)>.backface {
+			background: url(img/apcoa.png) no-repeat;
+		}
+
+		.course>section>.courseitem>.item:nth-of-type(5)>.backface {
+			background: url(img/hlx.png) no-repeat;
+		}
+
+		.course>section>.courseitem>.item:nth-of-type(6)>.backface {
+			background: url(img/lbs.png) no-repeat;
+		}
+
+		.course>section>.courseitem>.item:nth-of-type(7)>.backface {
+			background: url(img/leonberg.png) no-repeat;
+		}
+
+		.course>section>.courseitem>.item:nth-of-type(8)>.backface {
+			background: url(img/pcwelt.png) no-repeat;
+		}
+
+		.course>section>.courseitem>.item:nth-of-type(9)>.backface {
+			background: url(img/apcoa.png) no-repeat;
+		}
+
+		.course>section>.courseitem>.item:nth-of-type(10)>.backface {
+			background: url(img/tata.png) no-repeat;
+		}
+
+		.course>section>.courseitem>.item:nth-of-type(11)>.backface {
+			background: url(img/hlx.png) no-repeat;
+		}
+
+		.course>section>.courseitem>.item:nth-of-type(12)>.backface {
+			background: url(img/bks.png) no-repeat;
+		}
+
+		.course>section>.courseitem>.item>.face {
+			width: 100%;
+			height: 100%;
+			box-sizing: border-box;
+			padding: 15px;
+			background: #009ee0;
+			backface-visibility: hidden;
+			transform: rotateY(180deg);
+			color: white;
+			transition: 1s transform;
+		}
+
+		.course>section>.courseitem>.item:hover .face {
+			transform: rotateY(360deg);
+		}
+
+		.course>section>.courseitem>.item:hover .backface {
+			transform: rotateY(180deg);
+		}
+
+		/*第二屏 结束*/
+		/*第一屏 开始*/
+		.home>section>.homeitem {
+			width: 100%;
+			height: 100%;
+			perspective: 1000px;
+			transform-style: preserve-3d;
+			transition: 1s transform;
+		}
+
+		.home>section>.homeitem>li>div {
+			color: #fff;
+			text-align: center;
+			margin-top: 200px;
+		}
+
+		.home>section>.homeitem>li {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			visibility: hidden;
+		}
+
+		.home>section>.homeitem>li:nth-child(1) {
+			background: #dc6c5f;
+		}
+
+		.home>section>.homeitem>li:nth-child(2) {
+			background: #95dc84;
+		}
+
+		.home>section>.homeitem>li:nth-child(3) {
+			background: #64b9d2;
+		}
+
+		.home>section>.homeitem>li:nth-child(4) {
+			background: #000000;
+		}
+
+		.home>section>.homeitem>li.active {
+			visibility: visible;
+		}
+
+		.home>section>.homepoint {
+			position: absolute;
+			width: 100%;
+			bottom: 5px;
+			text-align: center;
+			transition: 1s transform;
+			cursor: pointer;
+		}
+
+		.home>section>.homepoint>li {
+			width: 20px;
+			height: 20px;
+			margin: 0 1px;
+			border-radius: 50%;
+			background: rgba(255, 255, 255, 0.5);
+			;
+			display: inline-block;
+			box-shadow: 0 0 4px rgba(25, 25, 25, 0.8);
+		}
+
+		.home>section>.homepoint>li.active {
+			background: #fff;
+			cursor: pointer;
+		}
+
+		/*左进右出*/
+		.home>section>.homeitem>li.leftHide {
+			visibility: hidden;
+			animation: leftHide 1s 1 linear;
+		}
+
+		.home>section>.homeitem>li.rightShow {
+			visibility: visible;
+			animation: rightShow 1s 1 linear;
+		}
+
+		@keyframes leftHide {
+			0% {
+				visibility: visible;
+			}
+
+			50% {
+				transform: translateX(-40%) rotateY(30deg) scale(0.8);
+			}
+
+			100% {
+				transform: translateZ(-200px);
+			}
+		}
+
+		@keyframes rightShow {
+			0% {
+				visibility: hidden;
+				transform: translateZ(-200px);
+			}
+
+			50% {
+				transform: translateX(40%) rotateY(-30deg) scale(0.8);
+			}
+
+			100% {}
+		}
+
+		/*右进左出*/
+		.home>section>.homeitem>li.leftShow {
+			visibility: visible;
+			animation: leftShow 1s 1 linear;
+		}
+
+		.home>section>.homeitem>li.rightHide {
+			visibility: hidden;
+			animation: rightHide 1s 1 linear;
+		}
+
+		@keyframes leftShow {
+			0% {
+				visibility: hidden;
+				transform: translateZ(-200px);
+			}
+
+			50% {
+				transform: translateX(-40%) rotateY(30deg) scale(0.8);
+			}
+
+			100% {}
+		}
+
+		@keyframes rightHide {
+			0% {
+				visibility: visible;
+			}
+
+			50% {
+				transform: translateX(40%) rotateY(-30deg) scale(0.8);
+			}
+
+			100% {
+				transform: translateZ(-200px);
+			}
+		}
+
+		/*第一屏 结束*/
+		/*第四屏 开始*/
+		.about>section>header {
+			margin: 50px 0 100px 50px;
+		}
+
+		.about>section>.abouttext {
+			width: 400px;
+			margin-left: 50px;
+		}
+
+		.about>section>.aboutline {
+			width: 357px;
+			height: 998px;
+			background: url(img/greenLine.png) no-repeat;
+			position: absolute;
+			top: -8px;
+			left: 50%;
+		}
+
+		.about>section>.aboutitem>.item {
+			width: 260px;
+			height: 200px;
+			border: 5px solid rgba(255, 255, 255, 0.5);
+			border-radius: 8px;
+			position: absolute;
+			z-index: 2;
+			overflow: hidden;
+			transition: 1s transform;
+		}
+
+		.about>section>.aboutitem>.item:nth-of-type(1) {
+			left: 750px;
+			top: 50px;
+		}
+
+		.about>section>.aboutitem>.item:nth-of-type(2) {
+			left: 600px;
+			top: 290px;
+		}
+
+		.about>section>.aboutitem>.item>ul,
+		.about>section>.aboutitem>.item>span {
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+		}
+
+		.about>section>.aboutitem>.item:nth-of-type(1)>span {
+			background: url(img/about2.jpg) no-repeat;
+			transform: scale(1.5);
+			transition: 1s;
+		}
+
+		.about>section>.aboutitem>.item:nth-of-type(2)>span {
+			background: url(img/about4.jpg) no-repeat;
+			transform: scale(1.5);
+			transition: 1s;
+		}
+
+		.about>section>.aboutitem>.item:hover span {
+			transform: scale(1);
+		}
+
+		.about>section>.aboutitem>.item>ul>li {
+			width: 130px;
+			height: 100px;
+			float: left;
+			transition: 1s;
+			overflow: hidden;
+		}
+
+		.about>section>.aboutitem>.item:nth-of-type(1)>ul>li:nth-child(1) {
+			background: url(img/about1.jpg) no-repeat;
+		}
+
+		.about>section>.aboutitem>.item:nth-of-type(1)>ul>li:nth-child(2) {
+			background: url(img/about1.jpg) no-repeat;
+			background-position: 100% 0;
+		}
+
+		.about>section>.aboutitem>.item:nth-of-type(1)>ul>li:nth-child(3) {
+			background: url(img/about1.jpg) no-repeat;
+			background-position: 0 100%;
+		}
+
+		.about>section>.aboutitem>.item:nth-of-type(1)>ul>li:nth-child(4) {
+			background: url(img/about1.jpg) no-repeat;
+			background-position: 100% 100%;
+		}
+
+		.about>section>.aboutitem>.item:nth-of-type(2)>ul>li:nth-child(1) {
+			background: url(img/about3.jpg) no-repeat;
+		}
+
+		.about>section>.aboutitem>.item:nth-of-type(2)>ul>li:nth-child(2) {
+			background: url(img/about3.jpg) no-repeat;
+			background-position: 100% 0;
+		}
+
+		.about>section>.aboutitem>.item:nth-of-type(2)>ul>li:nth-child(3) {
+			background: url(img/about3.jpg) no-repeat;
+			background-position: 0 100%;
+		}
+
+		.about>section>.aboutitem>.item:nth-of-type(2)>ul>li:nth-child(4) {
+			background: url(img/about3.jpg) no-repeat;
+			background-position: 100% 100%;
+		}
+
+		/*第四屏 结束*/
+		/*第五屏 开始*/
+		.team>section>header {
+			margin: 50px;
+			width: 400px;
+			float: left;
+			transition: 1s transform;
+		}
+
+		.team>section>.teamtext {
+			margin: 50px;
+			width: 400px;
+			float: right;
+			font-weight: 200;
+			transition: 1s transform;
+		}
+
+		.team>section>ul {
+			width: 944px;
+			height: 448px;
+			position: absolute;
+			top: 49%;
+			left: 7%;
+		}
+
+		.team>section>ul>li {
+			height: 100%;
+			width: 118px;
+			float: left;
+			background: url(img/team.png) no-repeat;
+			transition: 0.5s opacity;
+		}
+
+		.team>section>ul>li:nth-of-type(2) {
+			background-position: -118px 0;
+		}
+
+		.team>section>ul>li:nth-of-type(3) {
+			background-position: -236px 0;
+		}
+
+		.team>section>ul>li:nth-of-type(4) {
+			background-position: -354px 0;
+		}
+
+		.team>section>ul>li:nth-of-type(5) {
+			background-position: -472px 0;
+		}
+
+		.team>section>ul>li:nth-of-type(6) {
+			background-position: -590px 0;
+		}
+
+		.team>section>ul>li:nth-of-type(7) {
+			background-position: -708px 0;
+		}
+
+		.team>section>ul>li:nth-of-type(8) {
+			background-position: -826px 0;
+		}
+
+		.team>section>canvas {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+		}
+
+		/*第五屏 结束*/
+		/*右边固定轮播点 开始*/
+		#content>#rightPoint {
+			position: fixed;
+			top: 50%;
+			right: 10px;
+			z-index: 3;
+			cursor: pointer;
+		}
+
+		#content>#rightPoint>ul>li {
+			width: 15px;
+			height: 15px;
+			border-radius: 50%;
+			border: 1px solid #fff;
+			margin: 3px 0;
+		}
+
+		#content>#rightPoint>ul>li.rightActive {
+			background: #fff;
+		}
+
+		#content>#rightPoint>ul>li:hover {
+			background: #fff;
+		}
+
+		/*右边固定轮播点 结束*/
+		/*出入场 开始*/
+		.home>section>.homeitem,
+		.home>section>.homepoint {
+			transition: 1s transform, 1s opacity;
+		}
+
+		.course>section>.plane1 {
+			width: 359px;
+			height: 283px;
+			background: url(img/plane1.png) no-repeat;
+			position: absolute;
+			left: 300px;
+			top: -100px;
+			transition: 1s;
+		}
+
+		.course>section>.plane2 {
+			width: 309px;
+			height: 249px;
+			background: url(img/plane2.png) no-repeat;
+			position: absolute;
+			left: -100px;
+			top: 200px;
+			transition: 1s;
+		}
+
+		.course>section>.plane3 {
+			width: 230px;
+			height: 182px;
+			background: url(img/plane3.png) no-repeat;
+			position: absolute;
+			left: 300px;
+			top: 400px;
+			transition: 1s;
+		}
+
+		.works>section>.pencel1 {
+			width: 180px;
+			height: 97px;
+			background: url(img/pencel1.png) no-repeat;
+			position: absolute;
+			transition: 1s;
+			left: 500px;
+			top: 0;
+		}
+
+		.works>section>.pencel2 {
+			width: 268px;
+			height: 38px;
+			background: url(img/pencel2.png) no-repeat;
+			position: absolute;
+			transition: 1s;
+			left: 300px;
+			top: 250px;
+		}
+
+		.works>section>.pencel3 {
+			width: 441px;
+			height: 231px;
+			background: url(img/pencel3.png) no-repeat;
+			position: absolute;
+			transition: 1s;
+			left: 650px;
+			top: 300px;
+		}
+
+		/*出入场 结束*/
+		/*音频 开始*/
+		#ad {
+			width: 14px;
+			height: 14px;
+			margin: 50px 0 0 5px;
+			float: left;
+			background: url(img/musicoff.gif) no-repeat;
+			cursor: pointer;
+		}
+
+		/*音频 结束*/
+		/*开机动画 开始*/
+		#mask {
+			width: 100%;
+			height: 100%;
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: 4;
+		}
+
+		#mask>.maskgo {
+			width: 100%;
+			height: 50%;
+			background: deepskyblue;
+			transition: 1s height;
+		}
+
+		#mask>.maskdown {
+			width: 100%;
+			height: 50%;
+			background: deepskyblue;
+			transition: 1s height;
+			position: absolute;
+			bottom: 0;
+		}
+
+		#mask>.maskline {
+			width: 0%;
+			height: 4px;
+			background: #fff;
+			position: absolute;
+			top: 50%;
+			left: 0;
+			transition: 1s width;
+		}
+	</style>
+</head>
+
+<body>
+	<section id="wrap">
+		<div id="mask">
+			<div class="maskgo">
+
+			</div>
+			<div class="maskdown">
+
+			</div>
+			<span class="maskline">
+
+			</span>
+		</div>
+		<header id="head">
+			<div class="headMain">
+				<h1 class="logo">
+					<a href="javascript:;">
+						<img src="img/logo.png" />
+					</a>
+				</h1>
+				<div id="ad">
+					<audio src="img/audio.mp3" loop></audio>
+				</div>
+				<nav class="nav">
+					<ul>
+						<li>
+							<a href="javascript:;">
+								<div class="up"><img src="img/home_gruen.png" /></div>
+								<div class="down"><img src="img/home.png" /></div>
+							</a>
+						</li>
+						<li>
+							<a href="javascript:;">
+								<div class="up">Course</div>
+								<div class="down">Course</div>
+							</a>
+						</li>
+						<li>
+							<a href="javascript:;">
+								<div class="up">Works</div>
+								<div class="down">Works</div>
+							</a>
+						</li>
+						<li>
+							<a href="javascript:;">
+								<div class="up">About</div>
+								<div class="down">About</div>
+							</a>
+						</li>
+						<li>
+							<a href="javascript:;">
+								<div class="up">Team</div>
+								<div class="down">Team</div>
+							</a>
+						</li>
+					</ul>
+				</nav>
+				<div class="arrow">
+
+				</div>
+			</div>
+		</header>
+		<section id="content">
+			<ul>
+				<li class="home">
+					<section>
+						<ul class="homeitem">
+							<li class="commonTitle active">
+								<div>one</div>
+							</li>
+							<li class="commonTitle">
+								<div>two</div>
+							</li>
+							<li class="commonTitle">
+								<div>three</div>
+							</li>
+							<li class="commonTitle">
+								<div>four</div>
+							</li>
+						</ul>
+						<ul class="homepoint">
+							<li class="active"></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+					</section>
+				</li>
+				<li class="course">
+					<section>
+						<header class="commonTitle">
+							<span>EINIGE</span><br />
+							<span>UNSERER</span><br />
+							<span>KUNDEN</span><br />
+						</header>
+						<div class="coursetext">
+							<p class="commonText">Das Kundenvertrauen in unsere Kompetenz ist die notwendige Basis einer
+								erfolgreichen Zusammenarbeit, gleichzeitig aber auch das größte Lob, das man uns
+								entgegenbringen kann. <br />
+								Diese und viele weitere große und kleine Kunden vertrauen uns seit Jahren, was uns stolz
+								macht, und dafür sagen wir an dieser Stelle einfach mal. </p>
+						</div>
+						<div class="courseitem">
+							<div class="item">
+								<div class="face">
+									你好！
+								</div>
+								<div class="backface">
+
+								</div>
+							</div>
+							<div class="item">
+								<div class="backface">
+
+								</div>
+								<div class="face">
+									你好！
+								</div>
+							</div>
+							<div class="item">
+								<div class="backface">
+
+								</div>
+								<div class="face">
+
+								</div>
+							</div>
+							<div class="item">
+								<div class="backface">
+
+								</div>
+								<div class="face">
+
+								</div>
+							</div>
+							<div class="item">
+								<div class="backface">
+
+								</div>
+								<div class="face">
+
+								</div>
+							</div>
+							<div class="item">
+								<div class="backface">
+
+								</div>
+								<div class="face">
+
+								</div>
+							</div>
+							<div class="item">
+								<div class="backface">
+
+								</div>
+								<div class="face">
+
+								</div>
+							</div>
+							<div class="item">
+								<div class="backface">
+
+								</div>
+								<div class="face">
+
+								</div>
+							</div>
+							<div class="item">
+								<div class="backface">
+
+								</div>
+								<div class="face">
+
+								</div>
+							</div>
+							<div class="item">
+								<div class="backface">
+
+								</div>
+								<div class="face">
+
+								</div>
+							</div>
+							<div class="item">
+								<div class="backface">
+
+								</div>
+								<div class="face">
+
+								</div>
+							</div>
+							<div class="item">
+								<div class="backface">
+
+								</div>
+								<div class="face">
+
+								</div>
+							</div>
+						</div>
+						<div class="plane1">
+
+						</div>
+						<div class="plane2">
+
+						</div>
+						<div class="plane3">
+
+						</div>
+					</section>
+				</li>
+				<li class="works">
+					<section>
+						<header class="commonTitle">
+							<span>EINBLICK</span><br />
+							<span>ERKENNTNIS</span><br />
+							<span>ERGEBNIS</span><br />
+						</header>
+						<section id="workitem">
+							<div class="item">
+								<img src="img/worksimg1.jpg" />
+								<div class="mask">
+									<span>Der bunte Medienmix ist die Faszination die uns antreibt und das, was man an
+										uns schätzt. Von A bis Z</span>
+									<div class="icon">
+
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<img src="img/worksimg2.jpg" />
+								<div class="mask">
+									<span>Kundenvertrauen in unsere Kompetenz ist</span>
+									<div class="icon">
+
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<img src="img/worksimg3.jpg" />
+								<div class="mask">
+									<span>Diese und viele weitere große und kleine Kunden vertrauen uns seit Jahren, was
+										uns stolz macht</span>
+									<div class="icon">
+
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<img src="img/worksimg4.jpg" />
+								<div class="mask">
+									<span>Wir sind seit 2002 eine Full-Service-Werbeagentur mit Stammsitz in Heimsheim,
+										zwischen Stuttgart und Karlsruhe.</span>
+									<div class="icon">
+
+									</div>
+								</div>
+							</div>
+						</section>
+						<div class="robot">
+
+						</div>
+						<div class="pencel1">
+
+						</div>
+						<div class="pencel2">
+
+						</div>
+						<div class="pencel3">
+
+						</div>
+					</section>
+				</li>
+				<li class="about">
+					<section>
+						<header class="commonTitle">
+							<span>DIE</span><br />
+							<span>SPEZIELLE</span><br />
+							<span>VIELFALT</span><br />
+						</header>
+						<div class="abouttext">
+							<p class="commonText">Der bunte Medienmix ist die Faszination die uns antreibt und das, was
+								man an uns schätzt. Von A bis Z und von vorne bis hinten nehmen wir Ihr Projekt unter
+								unsere Fittiche und lassen es zu etwas Großartigem heranwachsen.</p>
+						</div>
+						<div class="aboutitem">
+							<div class="item">
+								<span></span>
+								<ul>
+									<li></li>
+									<li></li>
+									<li></li>
+									<li></li>
+								</ul>
+							</div>
+							<div class="item">
+								<span></span>
+								<ul>
+									<li></li>
+									<li></li>
+									<li></li>
+									<li></li>
+								</ul>
+							</div>
+						</div>
+						<div class="aboutline">
+
+						</div>
+					</section>
+				</li>
+				<li class="team">
+					<section>
+						<header class="commonTitle">
+							<span>WIR SIND</span><br />
+							<span>VOXELAIR</span><br />
+						</header>
+						<div class="teamtext">
+							<p class="commonText">Wir sind seit 2002 eine Full-Service-Werbeagentur mit Stammsitz in
+								Heimsheim, zwischen Stuttgart und Karlsruhe. </p>
+							<p class="commonText">Über 60 Jahre Erfahrung vereinen das gesamte VoxelAir-Team. Dabei hat
+								jedes Voxel neben professionellem Allroundwissen auch sein ganz spezielles Gebiet, um
+								selbst die individuellsten Kundenwünsche schnell und kompetent umzusetzen.</p>
+						</div>
+						<ul class="teamitem">
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+					</section>
+				</li>
+			</ul>
+			<div id="rightPoint">
+				<ul>
+					<li class="rightActive"></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+		</section>
+	</section>
+</body>
+<script type="text/javascript">
+	window.onload = function () {
+		var arrow = document.querySelector('#head > .headMain > .arrow')
+		var liNodes = document.querySelectorAll('#head > .headMain > .nav > ul > li')
+		var upNodes = document.querySelectorAll('#head > .headMain > .nav > ul > li .up')
+		var head = document.querySelector('#head')
+		var content = document.querySelector('#content')
+		var conliNodes = document.querySelectorAll('#content > ul > li')
+		var conul = document.querySelector('#content > ul')
+		var itemliNodes = document.querySelectorAll('.home > section > .homeitem > li')
+		var pointliNodes = document.querySelectorAll('.home > section > .homepoint > li')
+		var homeitem = document.querySelector('.home > section > ul')
+		var aboutliNodes01 = document.querySelectorAll(
+			'.about > section > .aboutitem > .item:nth-of-type(1) > ul > li')
+		var aboutliNodes02 = document.querySelectorAll(
+			'.about > section > .aboutitem > .item:nth-of-type(2) > ul > li')
+		var teamulNode = document.querySelector('.team > section > ul')
+		var teamliNodes = document.querySelectorAll('.team > section > ul > li')
+		var teamcanvas = document.querySelector('.team > section')
+		var rightpoint = document.querySelectorAll('#content > #rightPoint > ul > li')
+		var audio = document.querySelector('#head > .headMain > #ad > audio')
+		var music = document.querySelector('#ad')
+		var mask = document.querySelector('#mask')
+		var maskDiv = document.querySelectorAll('#mask > div')
+		var maskline = document.querySelector('#mask > .maskline')
+
+		//开机动画
+		loadingAn()
+
+		function loadingAn() {
+			var arr = ['bg1.jpg', 'bg2.jpg', 'bg3.jpg', 'bg4.jpg', 'bg5.jpg', 'about1.jpg', 'about2.jpg', 'about3.jpg',
+				'about4.jpg', 'worksimg1.jpg', 'worksimg2.jpg', 'worksimg3.jpg', 'worksimg4.jpg', 'team.png',
+				'greenLine.png'
+			]
+			var flag = 0
+			for (var i = 0; i < arr.length; i++) {
+				var img = new Image()
+				img.src = 'img/' + arr[i]
+				img.onload = function () {
+					flag++
+					maskline.style.width = flag / arr.length * 100 + '%'
+				}
+			}
+			maskline.addEventListener('transitionend', function () {
+				if (flag === arr.length) {
+					maskDiv[0].style.height = 0
+					maskDiv[1].style.height = 0
+					this.style.display = 'none'
+				}
+			})
+			maskDiv[0].addEventListener('transitionend', function () {
+				mask.remove()
+				home3D()
+			})
+		}
+
+
+
+		//音频
+		ad.onclick = function () {
+			if (audio.paused) {
+				audio.play()
+				ad.style.background = 'url(img/musicon.gif)'
+			} else {
+				audio.pause()
+				ad.style.background = 'url(img/musicoff.gif)'
+			}
+		}
+
+		//出入场
+		var preindex = 0
+		var arr = [{
+				outAn: function () {
+					var homeitem = document.querySelector('.home > section > .homeitem')
+					var homepoint = document.querySelector('.home > section > .homepoint')
+					homeitem.style.transform = 'translateY(-400px)'
+					homepoint.style.transform = 'translateY(100px)'
+					homeitem.style.opacity = 0
+					homepoint.style.opacity = 0
+				},
+				inAn: function () {
+					var homeitem = document.querySelector('.home > section > .homeitem')
+					var homepoint = document.querySelector('.home > section > .homepoint')
+					homeitem.style.transform = 'translateY(0)'
+					homepoint.style.transform = 'translateY(0)'
+					homeitem.style.opacity = 1
+					homepoint.style.opacity = 1
+				}
+			},
+			{
+				outAn: function () {
+					var plane1 = document.querySelector('.course > section > .plane1')
+					var plane2 = document.querySelector('.course > section > .plane2')
+					var plane3 = document.querySelector('.course > section > .plane3')
+					plane1.style.transform = 'translate(-200px,-200px)'
+					plane2.style.transform = 'translate(-200px,200px)'
+					plane3.style.transform = 'translate(200px,-200px)'
+				},
+				inAn: function () {
+					var plane1 = document.querySelector('.course > section > .plane1')
+					var plane2 = document.querySelector('.course > section > .plane2')
+					var plane3 = document.querySelector('.course > section > .plane3')
+					plane1.style.transform = 'translate(0px,0px)'
+					plane2.style.transform = 'translate(0px,0px)'
+					plane3.style.transform = 'translate(0px,0px)'
+				}
+			},
+			{
+				outAn: function () {
+					var pencel1 = document.querySelector('.works > section > .pencel1')
+					var pencel2 = document.querySelector('.works > section > .pencel2')
+					var pencel3 = document.querySelector('.works > section > .pencel3')
+					pencel1.style.transform = 'translateY(-100px)'
+					pencel2.style.transform = 'translateY(-100px)'
+					pencel3.style.transform = 'translateY(100px)'
+				},
+				inAn: function () {
+					var pencel1 = document.querySelector('.works > section > .pencel1')
+					var pencel2 = document.querySelector('.works > section > .pencel2')
+					var pencel3 = document.querySelector('.works > section > .pencel3')
+					pencel1.style.transform = 'translateY(0)'
+					pencel2.style.transform = 'translateY(0)'
+					pencel3.style.transform = 'translateY(0)'
+				}
+			},
+			{
+				outAn: function () {
+					var aboutitem1 = document.querySelector(
+						'.about > section > .aboutitem > .item:nth-of-type(1)')
+					var aboutitem2 = document.querySelector(
+						'.about > section > .aboutitem > .item:nth-of-type(2)')
+					aboutitem1.style.transform = 'rotate(45deg)'
+					aboutitem2.style.transform = 'rotate(-45deg)'
+				},
+				inAn: function () {
+					var aboutitem1 = document.querySelector(
+						'.about > section > .aboutitem > .item:nth-of-type(1)')
+					var aboutitem2 = document.querySelector(
+						'.about > section > .aboutitem > .item:nth-of-type(2)')
+					aboutitem1.style.transform = 'rotate(0)'
+					aboutitem2.style.transform = 'rotate(0)'
+				}
+			},
+			{
+				outAn: function () {
+					var teamheader = document.querySelector('.team > section > header')
+					var teamtext = document.querySelector('.team > section > .teamtext')
+					teamheader.style.transform = 'translateX(-200px)'
+					teamtext.style.transform = 'translateX(200px)'
+				},
+				inAn: function () {
+					var teamheader = document.querySelector('.team > section > header')
+					var teamtext = document.querySelector('.team > section > .teamtext')
+					teamheader.style.transform = 'translateX(0)'
+					teamtext.style.transform = 'translateX(0)'
+				}
+			}
+		]
+		for (var i = 0; i < arr.length; i++) {
+			arr[i]['outAn']()
+		}
+		setTimeout(function () {
+			arr[0]['inAn']()
+		}, 2000)
+
+
+		//右边小圆点
+		rightPointmove()
+
+		function rightPointmove() {
+			for (var i = 0; i < rightpoint.length; i++) {
+				rightpoint[i].index = i
+				rightpoint[i].onclick = function () {
+					move(this.index)
+				}
+			}
+		}
+
+
+		//第五屏
+		biubiu()
+
+		function biubiu() {
+			var oc = null
+			var time1 = 0
+			var time2 = 0
+			for (var i = 0; i < teamliNodes.length; i++) {
+				teamliNodes[i].onmouseenter = function () {
+					for (var i = 0; i < teamliNodes.length; i++) {
+						teamliNodes[i].style.opacity = 0.3
+					}
+					this.style.opacity = 1
+					addCanvas()
+					oc.style.left = this.offsetLeft + oc.width * 0.5 + 18 + 'px'
+				}
+
+			}
+
+
+
+			function addCanvas() {
+				if (!oc) {
+					oc = document.createElement('canvas')
+					oc.width = teamliNodes[0].offsetWidth
+					oc.height = teamliNodes[0].offsetHeight * 2 / 3
+					oc.onmouseleave = function () {
+						for (var i = 0; i < teamliNodes.length; i++) {
+							teamliNodes[i].style.opacity = 1
+						}
+						removeCanvas()
+					}
+					teamcanvas.appendChild(oc)
+					QiPao()
+				}
+
+			}
+
+			function QiPao() {
+				if (oc.getContext) {
+					var ctx = oc.getContext("2d");
+					var arr = [];
+					//将数组中的圆绘制到画布上
+					time1 = setInterval(function () {
+						ctx.clearRect(0, 0, oc.width, oc.height);
+						//动画
+						for (var i = 0; i < arr.length; i++) {
+							arr[i].deg += 10;
+							arr[i].x = arr[i].startX + Math.sin(arr[i].deg * Math.PI / 180) * arr[i].step * 2;
+							arr[i].y = arr[i].startY - (arr[i].deg * Math.PI / 180) * arr[i].step;
+
+							if (arr[i].y <= 50) {
+								arr.splice(i, 1)
+							}
+						}
+						//绘制
+						for (var i = 0; i < arr.length; i++) {
+							ctx.save();
+							ctx.fillStyle = "rgba(" + arr[i].red + "," + arr[i].green + "," + arr[i].blue +
+								"," + arr[i].alp + ")";
+							ctx.beginPath();
+							ctx.arc(arr[i].x, arr[i].y, arr[i].r, 0, 2 * Math.PI);
+							ctx.fill();
+							ctx.restore();
+						}
+					}, 1000 / 60)
+
+					//往arr中注入随机圆的信息
+					time2 = setInterval(function () {
+						var r = Math.random() * 6 + 2;
+						var x = Math.random() * oc.width;
+						var y = oc.height - r;
+						var red = Math.round(Math.random() * 255);
+						var green = Math.round(Math.random() * 255);
+						var blue = Math.round(Math.random() * 255);
+						var alp = 1;
+
+
+						var deg = 0;
+						var startX = x;
+						var startY = y;
+						//曲线的运动形式
+						var step = Math.random() * 20 + 10;
+						arr.push({
+							x: x,
+							y: y,
+							r: r,
+							red: red,
+							green: green,
+							blue: blue,
+							alp: alp,
+							deg: deg,
+							startX: startX,
+							startY: startY,
+							step: step
+						})
+					}, 50)
+				}
+			}
+
+			function removeCanvas() {
+				oc.remove()
+				oc = null
+				clearInterval(time1)
+				clearInterval(time2)
+			}
+
+		}
+
+
+
+
+		//第四屏 图片效果
+		aboutTaggle(aboutliNodes01)
+		aboutTaggle(aboutliNodes02)
+
+		function aboutTaggle(aboutliNodes) {
+			aboutliNodes[0].parentNode.onmouseenter = function () {
+				for (var i = 0; i < aboutliNodes.length; i++) {
+					aboutliNodes[0].style.backgroundPosition = '0 -100%'
+					aboutliNodes[1].style.backgroundPosition = '200% 0'
+					aboutliNodes[2].style.backgroundPosition = '-100% 100%'
+					aboutliNodes[3].style.backgroundPosition = '100% 200%'
+				}
+			}
+			aboutliNodes[0].parentNode.onmouseleave = function () {
+				for (var i = 0; i < aboutliNodes.length; i++) {
+					aboutliNodes[0].style.backgroundPosition = '0 0'
+					aboutliNodes[1].style.backgroundPosition = '100% 0'
+					aboutliNodes[2].style.backgroundPosition = '0 100%'
+					aboutliNodes[3].style.backgroundPosition = '100% 100%'
+				}
+			}
+
+		}
+
+		//第一屏js
+		home3D()
+
+		var oldindex = 0
+		var autoindex = 0
+		var timer3D = 0
+
+		function home3D() {
+			for (var i = 0; i < pointliNodes.length; i++) {
+				//数组索引的转绑
+				pointliNodes[i].index = i
+				pointliNodes[i].addEventListener('click', function () {
+					clearInterval(timer3D)
+					for (var i = 0; i < pointliNodes.length; i++) {
+						pointliNodes[i].className = ''
+					}
+					this.className = 'active'
+
+					//左进右出
+					if (this.index > oldindex) {
+						itemliNodes[this.index].classList.remove('leftShow')
+						itemliNodes[this.index].classList.remove('leftHide')
+						itemliNodes[this.index].classList.remove('rightHide')
+						itemliNodes[this.index].classList.add('rightShow')
+
+						itemliNodes[oldindex].classList.remove('rightShow')
+						itemliNodes[oldindex].classList.remove('leftShow')
+						itemliNodes[oldindex].classList.remove('rightHide')
+						itemliNodes[oldindex].classList.add('leftHide')
+					}
+
+					//左出右进
+					if (this.index < oldindex) {
+						itemliNodes[this.index].classList.remove('leftHide')
+						itemliNodes[this.index].classList.remove('rightShow')
+						itemliNodes[this.index].classList.remove('rightHide')
+						itemliNodes[this.index].classList.add('leftShow')
+
+						itemliNodes[oldindex].classList.remove('rightShow')
+						itemliNodes[oldindex].classList.remove('leftHide')
+						itemliNodes[oldindex].classList.remove('leftShow')
+						itemliNodes[oldindex].classList.add('rightHide')
+					}
+
+					oldindex = this.index
+					autoindex = this.index
+				})
+			}
+			auto3Dmove()
+
+			function auto3Dmove() {
+				clearInterval(timer3D)
+				timer3D = setInterval(function () {
+					autoindex++
+					//无缝轮播
+					if (autoindex == pointliNodes.length) {
+						autoindex = 0
+					}
+					for (var i = 0; i < pointliNodes.length; i++) {
+						pointliNodes[i].className = ''
+					}
+					pointliNodes[autoindex].className = 'active'
+					itemliNodes[autoindex].classList.remove('leftShow')
+					itemliNodes[autoindex].classList.remove('leftHide')
+					itemliNodes[autoindex].classList.remove('rightHide')
+					itemliNodes[autoindex].classList.add('rightShow')
+
+					itemliNodes[oldindex].classList.remove('rightShow')
+					itemliNodes[oldindex].classList.remove('leftShow')
+					itemliNodes[oldindex].classList.remove('rightHide')
+					itemliNodes[oldindex].classList.add('leftHide')
+
+					oldindex = autoindex
+				}, 5000)
+
+			}
+
+		}
+
+
+
+		//将headBind里面的索引拿到全局来
+		var nowindex = 0
+
+
+		//头部
+		headBind()
+
+		function headBind() {
+			upNodes[0].style.width = '100%'
+			arrow.style.left = liNodes[0].offsetLeft + liNodes[0].offsetWidth / 2 - (arrow.offsetWidth / 2) + 'px'
+
+			for (var i = 0; i < liNodes.length; i++) {
+				//此时转绑 功能类似闭包
+				liNodes[i].index = i
+				liNodes[i].addEventListener('click', function () {
+					preindex = nowindex
+					move(this.index)
+					nowindex = this.index
+				})
+			}
+		}
+
+
+		//内容区
+		if (content.addEventListener) {
+			content.addEventListener('DOMMouseScroll', wheelFn)
+		}
+		content.onmousewheel = wheelFn
+
+		function wheelFn(e) {
+			e = e || event
+			var dir = ''
+			if (e.wheelDelta) {
+				dir = e.wheelDelta > 0 ? "up" : "down";
+			} else if (e.detail) {
+				dir = e.wheelDelta < 0 ? "up" : "down";
+			}
+			preindex = nowindex
+			switch (dir) {
+				case 'up':
+					if (nowindex > 0) {
+						nowindex--
+						move(nowindex)
+					}
+					break
+				case 'down':
+					if (nowindex < conliNodes.length - 1) {
+						nowindex++
+						move(nowindex)
+					}
+					break
+			}
+		}
+
+		contentBind()
+
+		function contentBind() {
+			content.style.height = document.documentElement.clientHeight - head.offsetHeight + 'px'
+			for (var i = 0; i < conliNodes.length; i++) {
+				conliNodes[i].style.height = document.documentElement.clientHeight - head.offsetHeight + 'px'
+			}
+		}
+
+		window.onresize = function () {
+			contentBind()
+			conul.style.top = -nowindex * (document.documentElement.clientHeight - head.offsetHeight) + 'px'
+			arrow.style.left = liNodes[nowindex].offsetLeft + liNodes[nowindex].offsetWidth / 2 - (arrow
+				.offsetWidth / 2) + 'px'
+		}
+
+		//move函数
+		//move(4)
+		function move(index) {
+			for (var i = 0; i < upNodes.length; i++) {
+				upNodes[i].style.width = ''
+			}
+			upNodes[index].style.width = '100%'
+			arrow.style.left = liNodes[index].offsetLeft + liNodes[index].offsetWidth / 2 - (arrow.offsetWidth / 2) +
+				'px'
+			conul.style.top = -index * (document.documentElement.clientHeight - head.offsetHeight) + 'px'
+			for (var i = 0; i < rightpoint.length; i++) {
+				rightpoint[i].classList.remove('rightActive')
+			}
+			rightpoint[index].classList.add('rightActive')
+
+			//出入场
+			if (arr[index] && typeof arr[index]['inAn'] === 'function') {
+				arr[index]['inAn']()
+			}
+			if (arr[preindex]) {
+				arr[preindex]['outAn']()
+			}
+		}
+
+
+
+
+	}
+</script>
+
+</html>
